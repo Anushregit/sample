@@ -4,11 +4,13 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.abc.spring.model.User;
 
@@ -36,5 +38,11 @@ public class HomeController {
 		System.out.println("User Page Requested");
 		model.addAttribute("userName", user.getUserName());
 		return "user";
+	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public String test() {
+		return "success";
 	}
 }
